@@ -7,7 +7,7 @@
                 <h3 class="card-title">Edit User</h3>
             </div>
 
-            <form method="POST" action="{{route('admin.user.update',$user)}}">
+            <form method="POST" action="{{route('admin.user.update',$user)}}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="card-body">
@@ -25,6 +25,16 @@
                         <label for="exampleInputEmail1">Phone</label>
                         <input type="text" name="phone" class="form-control" value="{{$user->phone}}" id="exampleInputEmail1">
 
+                        <label for="image">Image</label>
+                        <input type="file" name="image" class="form-control" id="image">
+
+                        <label>Type</label>
+                        <select class="form-control" name="type">
+                            <option>Choose</option>
+                            <option value="editor">editor</option>
+                            <option value="viewer">viewer</option>
+                            <option value="admin">admin</option>
+                        </select>
 
                     </div>
                     @error('name')

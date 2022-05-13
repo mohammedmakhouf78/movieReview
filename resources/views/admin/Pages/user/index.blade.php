@@ -21,6 +21,8 @@
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Name</th>
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Email</th>
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Phone</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Type</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Image</th>
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Edit</th>
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Delete</th>
 
@@ -33,6 +35,10 @@
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->phone}}</td>
+                                    <td>{{$user->roles()->first()->name ?? "no-role"}}</td>
+                                    <td>
+                                        <img width="100px" src="{{asset('images/' . $user->image)}}" alt="">
+                                    </td>
                                     <td>
                                         <form method="get" action="{{route('admin.user.edit',$user)}}">
                                             @csrf

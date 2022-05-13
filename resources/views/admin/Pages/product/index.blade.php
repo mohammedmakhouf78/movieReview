@@ -27,6 +27,7 @@
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Is_Approve</th>
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Category</th>
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">User</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Image</th>
 
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Edit</th>
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Delete</th>
@@ -47,6 +48,9 @@
                                     @endif
                                     <td>{{$product->category->name}}</td>
                                     <td>{{$product->user->name}}</td>
+                                    <td>
+                                        <img width="100px" src="{{asset('images/' . $product->image)}}" alt="">
+                                    </td>
                                     <td>
                                         <form method="get" action="{{route('admin.product.edit',$product)}}">
                                             @csrf
@@ -78,32 +82,7 @@
                     </div>
                     <div class="col-sm-12 col-md-7">
                         <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
-                            <ul class="pagination">
-                                <li class="paginate_button page-item previous disabled" id="example2_previous">
-                                    <a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
-                                </li>
-                                <li class="paginate_button page-item active">
-                                    <a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-                                </li>
-                                <li
-                                    class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="2" tabindex="0" class="page-link">2</a>
-                                </li>
-                                <li
-                                    class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0" class="page-link">3</a>
-                                </li>
-                                <li
-                                    class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="4" tabindex="0" class="page-link">4</a>
-                                </li>
-                                <li
-                                    class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="5" tabindex="0" class="page-link">5</a>
-                                </li>
-                                <li
-                                    class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="6" tabindex="0" class="page-link">6</a>
-                                </li>
-                                <li
-                                    class="paginate_button page-item next" id="example2_next"><a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
-                                </li>
-                            </ul>
+                            {{$products->links()}}
                         </div>
                     </div>
                 </div>

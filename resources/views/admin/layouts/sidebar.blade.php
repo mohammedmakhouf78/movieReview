@@ -24,8 +24,11 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
-                <li class="nav-item has-treeview menu-open">
-                    <a href="#" class="nav-link active">
+                     @if (currentRoute('admin.category.index'))
+                         
+                     @endif
+                <li class="nav-item has-treeview {{currentRoute('admin.category.index') ? 'menu-open' : ''}}">
+                    <a href="#" class="nav-link {{currentRoute('admin.category.index') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Category
@@ -43,8 +46,8 @@
                     </ul>
                 </li>
 
-                <li class="nav-item has-treeview menu-open">
-                    <a href="#" class="nav-link active">
+                <li class="nav-item has-treeview {{currentRoute('admin.user.index') ? 'menu-open' : ''}}">
+                    <a href="#" class="nav-link {{currentRoute('admin.user.index') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             User
@@ -62,8 +65,8 @@
                     </ul>
                 </li>
 
-                <li class="nav-item has-treeview menu-open">
-                    <a href="#" class="nav-link active">
+                <li class="nav-item has-treeview {{currentRoute('admin.product.index') ? 'menu-open' : ''}}">
+                    <a href="#" class="nav-link {{currentRoute('admin.product.index') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Product
@@ -81,8 +84,8 @@
                     </ul>
                 </li>
 
-                <li class="nav-item has-treeview menu-open">
-                    <a href="#" class="nav-link active">
+                <li class="nav-item has-treeview {{currentRoute('admin.review.index') ? 'menu-open' : ''}}">
+                    <a href="#" class="nav-link {{currentRoute('admin.review.index') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Review
