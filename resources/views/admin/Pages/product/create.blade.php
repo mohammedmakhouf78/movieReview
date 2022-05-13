@@ -7,19 +7,26 @@
                 <h3 class="card-title">Create New Product</h3>
             </div>
 
-            <form method="POST" action="{{route('admin.product.store')}}">
+            <form method="POST" action="{{route('admin.product.store')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Name</label>
-                        <input type="text" name="name" class="form-control" id="exampleInputEmail1">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" class="form-control" id="name">
                         @error('name')
                         <p class="text-danger"> {{$message}}</p>
                         @enderror()
 
-                        <label for="exampleInputEmail1">Price</label>
-                        <input type="text" name="price" class="form-control" id="exampleInputEmail1">
+                        <label for="price">Price</label>
+                        <input type="text" name="price" class="form-control" id="price">
                         @error('price')
+                        <p class="text-danger"> {{$message}}</p>
+                        @enderror()
+
+
+                        <label for="image">Image</label>
+                        <input type="file" name="image" class="form-control" id="image">
+                        @error('image')
                         <p class="text-danger"> {{$message}}</p>
                         @enderror()
 

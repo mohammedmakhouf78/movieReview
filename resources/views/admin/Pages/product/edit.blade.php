@@ -7,7 +7,7 @@
                 <h3 class="card-title">Edit Product</h3>
             </div>
 
-            <form method="POST" action="{{route('admin.product.update',$product)}}">
+            <form method="POST" action="{{route('admin.product.update',$product)}}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="card-body">
@@ -24,6 +24,12 @@
                         <p class="text-danger"> {{$message}}</p>
                         @enderror()
 
+                        <label for="image">Image</label>
+                        <input type="file" name="image" class="form-control" id="image">
+                        @error('image')
+                        <p class="text-danger"> {{$message}}</p>
+                        @enderror()
+
                         <div class="form-group" >
                             <textarea class="ckeditor form-control" name="description">{{$product->description}}</textarea>
                             @error('description')
@@ -31,8 +37,9 @@
                             @enderror()
                         </div>
 
+                        
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" name="is_approved" {{$product->is_approved == true ?"checked":" "}} id="exampleCheck1">
+                            <input type="checkbox" class="form-check-input" name="is_approved" {{$product->is_approved == true ? "checked":" "}} value="1" id="exampleCheck1">
                             <label class="form-check-label" for="exampleCheck1">Is_Approved</label>
                         </div>
 

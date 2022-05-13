@@ -8,13 +8,16 @@ use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\File;
 use RealRashid\SweetAlert\Facades\Alert;
+
+use function PHPUnit\Framework\fileExists;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        $products =Product::get();
+        $products = Product::paginate(5);
         return view('admin.Pages.product.index',compact('products'));
     }
 
@@ -38,7 +41,14 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        Product::create($request->validated());
+        $data = $request->validated();
+        if($request->file('image')){
+            $file= $request->file('image');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('images'), $filename);
+            $data['image'] = $filename;
+        }
+        Product::create($data);
         Alert::success('Success Title', 'Product Was Created');
         return redirect()->back();
 
@@ -78,6 +88,16 @@ class ProductController extends Controller
     public function update(UpdateProductRequest $request,Product $product)
     {
         $data=$request->all();
+        if($request->file('image')){
+            if(fileExists(public_path('images/' . $product->image)))
+            {
+                File::delete(public_path('images/' . $product->image));
+            }
+            $file= $request->file('image');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('images'), $filename);
+            $data['image'] = $filename;
+        }
         $data['is_approved'] = isset($data['is_approved']) ? $data['is_approved'] :0 ;
         $product->update($data);
         Alert::success('Success Title', 'Product Was Updated');

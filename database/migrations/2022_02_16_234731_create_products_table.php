@@ -19,6 +19,7 @@ return new class extends Migration
             $table->decimal('price');
             $table->text('description');
             $table->boolean('is_approved')->nullable();
+            $table->text('image')->nullable();
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
