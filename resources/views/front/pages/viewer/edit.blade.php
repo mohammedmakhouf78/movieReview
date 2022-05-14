@@ -10,9 +10,9 @@
                   <div class="form-holder">
                         <div class="form-content">
                               <div class="form-items">
-                                    <h3>Edit Editor Personal Data</h3>
+                                    <h3>Edit Viewer Personal Data</h3>
                                     <p>Fill in the data below.</p>
-                                    <form class="requires-validation" novalidate method="POST" enctype="multipart/form-data" action="{{route('home.editor.update',$user->id)}}">
+                                    <form class="requires-validation" novalidate method="POST" enctype="multipart/form-data" action="{{route('home.viewer.update',$user->id)}}">
                                         @csrf
                                           <div class="col-md-12">
                                                 <input class="form-control" type="email" name="email"

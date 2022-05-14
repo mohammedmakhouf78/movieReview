@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class EditorMiddleware
+class ViewerMiddleware
 {
     /**
      * Handle an incoming request.
@@ -19,7 +19,7 @@ class EditorMiddleware
     {
         if(Auth::check())
         {
-            if(!Auth::user()->hasRole('editor'))
+            if(!Auth::user()->hasRole('viewer'))
             {
                 return redirect()->back();
             }

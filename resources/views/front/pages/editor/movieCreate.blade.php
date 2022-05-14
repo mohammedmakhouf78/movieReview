@@ -23,15 +23,6 @@
                                                 @enderror
                                           </div>
 
-                                          <div class="col-md-12">
-                                                <input class="form-control" type="text" name="price"
-                                                      placeholder="price">
-                                                @error('price')
-                                                      <div class="invalid-feedback">{{ $message }}</div>
-                                                @enderror
-                                          </div>
-
-
                                           <div class="col-md-12 mt-5">
                                                 <textarea class="form-control" type="text" name="description"
                                                       placeholder="description"> </textarea>

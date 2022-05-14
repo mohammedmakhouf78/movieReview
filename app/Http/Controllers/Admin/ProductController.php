@@ -48,6 +48,7 @@ class ProductController extends Controller
             $file-> move(public_path('images'), $filename);
             $data['image'] = $filename;
         }
+        $data['user_id'] = $request->user_id;
         Product::create($data);
         Alert::success('Success Title', 'Product Was Created');
         return redirect()->back();

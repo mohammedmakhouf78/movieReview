@@ -25,10 +25,9 @@ class StoreProductRequest extends FormRequest
     {
         return [
             'name'=>'required',
-            'price'=>'required|numeric',
             'description'=>'required',
             'is_approved'=>'nullable|boolean',
-            'category_id'=>'required',
+            'category_id'=>'nullable',
             'image' => 'nullable|image|mimes:png,jpg,jpeg'
         ];
     }

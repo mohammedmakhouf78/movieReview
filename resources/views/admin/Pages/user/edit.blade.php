@@ -19,9 +19,6 @@
                         <label for="exampleInputEmail1">Email</label>
                         <input type="text" name="email" class="form-control" value="{{$user->email}}" id="exampleInputEmail1">
 
-                        <label for="exampleInputEmail1">Password</label>
-                        <input type="password" name="password" class="form-control" value="{{$user->password}}" id="exampleInputEmail1">
-
                         <label for="exampleInputEmail1">Phone</label>
                         <input type="text" name="phone" class="form-control" value="{{$user->phone}}" id="exampleInputEmail1">
 

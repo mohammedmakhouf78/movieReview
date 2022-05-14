@@ -22,27 +22,42 @@
                         style="padding: 10px; border: #333; background-color: #333;font-weight: 600; ">
                         <li class="menu-item current-menu-item"><a href="{{ route('home.index') }}"
                                     style="color: #fff; font-size: 16px; font-weight: bold;">Home</a></li>
+                        <li class="menu-item">
+                              <a href="{{ route('home.movies.index') }}"
+                                    style="color: #fff; font-size: 16px; font-weight: bold;">Movies</a>
+                        </li>
                         @guest
-                        <li class="menu-item">
-                              <a href="{{ route('home.registerPage') }}" style="color: #fff; font-size: 16px; font-weight: bold;">Register</a>
-                        </li>
-                        <li class="menu-item">
-                              <a href="{{ route('home.loginPage') }}" style="color: #fff; font-size: 16px; font-weight: bold;">Login</a>
-                        </li>
-                        @else
-                        @role('editor')
-                        <li class="menu-item">
-                              <a href="{{ route('home.editor.profile') }}" style="color: #fff; font-size: 16px; font-weight: bold;">Profile</a>
-                        </li>
-                        @endrole
-                        <li class="menu-item">
-                              <a href="{{ route('home.logout') }}" style="color: #fff; font-size: 16px; font-weight: bold;">Logout</a>
-                        </li>
-                        @endguest
-                        
 
-                        
-                        
+                              <li class="menu-item">
+                                    <a href="{{ route('home.registerPage') }}"
+                                          style="color: #fff; font-size: 16px; font-weight: bold;">Register</a>
+                              </li>
+                              <li class="menu-item">
+                                    <a href="{{ route('home.loginPage') }}"
+                                          style="color: #fff; font-size: 16px; font-weight: bold;">Login</a>
+                              </li>
+                        @else
+                              @role('editor')
+                                    <li class="menu-item">
+                                          <a href="{{ route('home.editor.profile') }}"
+                                                style="color: #fff; font-size: 16px; font-weight: bold;">Profile</a>
+                                    </li>
+                              @endrole
+                              @role('viewer')
+                                    <li class="menu-item">
+                                          <a href="{{ route('home.viewer.profile') }}"
+                                                style="color: #fff; font-size: 16px; font-weight: bold;">Profile</a>
+                                    </li>
+                              @endrole
+                              <li class="menu-item">
+                                    <a href="{{ route('home.logout') }}"
+                                          style="color: #fff; font-size: 16px; font-weight: bold;">Logout</a>
+                              </li>
+                        @endguest
+
+
+
+
                   </ul>
                   <div class="mobile-navigation"></div>
             </div>

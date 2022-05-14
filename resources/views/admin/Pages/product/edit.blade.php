@@ -18,11 +18,6 @@
                         <p class="text-danger"> {{$message}}</p>
                         @enderror()
 
-                        <label for="exampleInputEmail1">Price</label>
-                        <input type="text" name="price" value="{{$product->price}}" class="form-control" id="exampleInputEmail1">
-                        @error('price')
-                        <p class="text-danger"> {{$message}}</p>
-                        @enderror()
 
                         <label for="image">Image</label>
                         <input type="file" name="image" class="form-control" id="image">

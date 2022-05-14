@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\Category;
 use App\Models\Product;
@@ -19,7 +20,8 @@ class EditorController extends Controller
 {
     public function profile()
     {
-        return view('front.pages.editor.profile');
+        $movies = Product::where('user_id',Auth::user()->id)->get();
+        return view('front.pages.editor.profile',compact('movies'));
     }
 
     public function edit(User $user)
@@ -30,7 +32,6 @@ class EditorController extends Controller
     public function update(UpdateUserRequest $request,User $user)
     {
         $data=$request->validated();
-        $data['password']=Hash::make($data['password']);
         if($request->file('image')){
             if(fileExists(public_path('images/' . $user->image)))
             {
@@ -63,7 +64,6 @@ class EditorController extends Controller
 
         Product::create([
             'name' => $request->name,
-            'price' => $request->price,
             'description' => $request->description,
             'category_id' => $request->category_id,
             'user_id' => Auth::user()->id,
@@ -71,6 +71,38 @@ class EditorController extends Controller
         ]);
 
         Alert::success('Success Title', 'Movie Was Created Successfully !!!');
+        return redirect()->back();
+    }
+
+    public function movieEdit(Product $product)
+    {
+        $categories = Category::get();
+        return view('front.pages.editor.editMovie',compact('product','categories'));
+    }
+
+    public function movieUpdate(UpdateProductRequest $request,Product $product)
+    {
+        $data=$request->all();
+        if($request->file('image')){
+            if(fileExists(public_path('images/' . $product->image)))
+            {
+                File::delete(public_path('images/' . $product->image));
+            }
+            $file= $request->file('image');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('images'), $filename);
+            $data['image'] = $filename;
+        }
+        $data['is_approved'] = isset($data['is_approved']) ? $data['is_approved'] :0 ;
+        $product->update($data);
+        Alert::success('Success Title', 'Product Was Updated');
+        return redirect()->back();
+    }
+
+    public function movieDelete(Product $product)
+    {
+        $product->delete();
+        Alert::success('Success Title', 'Product Was Deleted');
         return redirect()->back();
     }
 }
