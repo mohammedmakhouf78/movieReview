@@ -1,0 +1,116 @@
+body {
+
+    background-image: none;
+
+
+    background-image: linear-gradient(90deg, #000000 0%, #d20834 55%, #150005 100%);
+
+
+
+}
+
+
+.main-content {
+    background-size: cover;
+
+}
+
+
+.main-navigation .menu-item.current-menu-item:after,
+.main-navigation .menu-item:hover:after {
+    background-color: #DE0A0A;
+}
+
+.main-content .container {
+    background-color: rgba(51, 51, 51, 0.995);
+    padding-right: 40px;
+    padding-left: 40px;
+
+
+}
+
+.latest-posts h2 {
+    padding-top: 50px;
+
+    color: black;
+    font-weight: bold;
+    margin-bottom: 20px;
+
+}
+
+.latest-posts p {
+    color: #989898;
+
+    line-height: 1.6;
+    padding-bottom: 10px;
+}
+
+.latest-posts .card .card-img-top {
+    width: 100%;
+    height: 300px;
+
+    margin-bottom: 5px;
+}
+
+.latest-posts .card .card-title {
+
+    color: #9e1418;
+    line-height: 1.5;
+    font-size: 18px;
+    font-weight: bold;
+    padding-bottom: 0%;
+    margin-bottom: 0%;
+
+}
+
+.latest-posts .card .card-text {
+    color: #989898;
+}
+
+.latest-posts .card {
+    margin-bottom: 30px;
+    text-align: center;
+    border: black 2px solid;
+    background-color: rgba(0, 0, 0, 0.459);
+
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-right: -10px;
+    margin-left: -10px;
+
+
+
+
+}
+
+.latest-posts .card .card-link {
+    color: #ec1c23;
+    font-weight: bold;
+    text-decoration: none;
+
+    margin-bottom: 20px;
+}
+
+.but {
+    margin-top: 15px;
+    background-color: #c41016e3;
+    color: #eee;
+    font-weight: bold;
+    width: 100%;
+    padding: 18px;
+    border: #c41016e3 3px;
+    margin-bottom: 0%;
+    font-size: 18px;
+
+}
+
+.site-footer {
+    background-color: #333;
+    margin-top: 50px;
+}
+
+.widget .widget-title {
+    color: #DE0A0A;
+    font-weight: 500;
+
+}

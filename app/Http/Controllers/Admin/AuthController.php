@@ -21,7 +21,6 @@ class AuthController extends Controller
     {
       $cred =$request->only('email','password');
       $user =User::where('email',$request->email)->first();
-      //dd($user->hasRole('admin'));
 
       if($user->hasRole('admin'))
       {
@@ -29,7 +28,6 @@ class AuthController extends Controller
          {
            return redirect(route('admin.index'));
          }
-
       }
       Alert::error('error','You are not allowed');
       return redirect()->back();

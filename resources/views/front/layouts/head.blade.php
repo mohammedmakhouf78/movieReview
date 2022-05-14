@@ -15,7 +15,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
 	<script src="{{asset('frontTemplate/bootstrap-5.1.3-dist\js\respond.min.js')}}"> </script>
-
+	<link rel="stylesheet" href="{{asset('AdminLET/plugins/fontawesome-free/css/all.min.css')}}">
 
 	<!-- Loading main css file -->
 	<link rel="stylesheet" href="{{asset('frontTemplate/bootstrap-5.1.3-dist/css/bootstrap.min.css')}}">

@@ -55,70 +55,13 @@
                               <div class="row">
                                     <div class="col">
                                           <a class="btn btn-primary " target="__blank"
-                                                href="{{ route('home.editor.edit', Auth::user()->id) }}">Edit</a>
-                                    </div>
-                                    <div class="col">
-                                          <a class="btn btn-primary " target="__blank"
-                                                href="{{ route('home.editor.movieCreate') }}">Create Movie</a>
+                                                href="{{ route('home.viewer.edit', Auth::user()->id) }}">Edit</a>
                                     </div>
                               </div>
                         </div>
                   </div>
             </div>
 
-
-            <div class="col">
-                  <table class="table table-dark table-striped">
-                        <thead>
-                              <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Image</th>
-                                    <th scope="col">Category</th>
-                                    <th scope="col">Edit</th>
-                                    <th scope="col">Delete</th>
-                              </tr>
-                        </thead>
-                        <tbody>
-                              @foreach ($movies as $movie)
-                              <tr>
-                                    <th scope="row">{{$movie->id}}</th>
-                                    <td>{{$movie->name}}</td>
-                                    <td>{{$movie->description}}</td>
-                                    <td>
-                                          <img width="200px" src="{{asset('images/' . $movie->image)}}" alt="">
-                                    </td>
-                                    <td>{{$movie->category->name ?? ""}}</td>
-                                    <td>
-                                          <form method="get" action="{{route('home.editor.movieEdit',$movie)}}">
-                                              @csrf
-                                              <button type="submit" class="btn btn-success">
-                                                  <i class="fa fa-edit"></i>
-                                              </button>
-                                          </form>
-                                      </td>
-                                      <td>
-                                          <form method="POST" action="{{route('home.editor.movieDelete',$movie)}}">
-                                              @csrf
-                                              @method('DELETE')
-                                              <button type="submit" class="btn btn-danger">
-                                                  <i class="fa fa-trash"></i>
-                                              </button>
-                                          </form>
-                                      </td>
-                              </tr>
-                              @endforeach
-                        </tbody>
-                  </table>
-            </div>
-
-
-
       </div>
 @endsection
 
-
-@section('script')
-      <script></script>
-@endsection
