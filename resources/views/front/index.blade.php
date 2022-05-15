@@ -11,9 +11,10 @@
                         <ul class="slides">
                               @foreach ($first as $index => $product)
                                     <li>
-                                        <a href="#">
-                                            <img src="{{ asset('images/' . $product->image) }}" alt="Slide {{ ++$index }}" style="height: 520px;">
-                                        </a>
+                                          <a href="#">
+                                                <img src="{{ asset('images/' . $product->image) }}"
+                                                      alt="Slide {{ ++$index }}" style="height: 520px;">
+                                          </a>
                                     </li>
                               @endforeach
                         </ul>
@@ -21,26 +22,27 @@
             </div>
             <div class="col-md-3">
                   <div class="row">
-                      @foreach ($second as $index => $product)
-                        <div class="col-sm-6 col-md-12">
-                            <div class="latest-movie">
-                                <a href="#"><img src="{{ asset('images/' . $product->image) }}"
-                                            style="width: 270px; height: 244px;" alt="Movie {{++$index}}"></a>
-                            </div>
-                        </div>
-                      @endforeach
+                        @foreach ($second as $index => $product)
+                              <div class="col-sm-6 col-md-12">
+                                    <div class="latest-movie">
+                                          <a href="#"><img src="{{ asset('images/' . $product->image) }}"
+                                                      style="width: 270px; height: 244px;"
+                                                      alt="Movie {{ ++$index }}"></a>
+                                    </div>
+                              </div>
+                        @endforeach
                   </div>
             </div>
       </div> <!-- .row -->
       <div class="row">
-          @foreach ($third as $product)
-            <div class="col-sm-6 col-md-3">
-                    <div class="latest-movie">
-                        <a href="#"><img src="{{ asset('images/' . $product->image) }}"
-                                    style="width: 270px; height: 244px;" alt="Movie 3"></a>
-                    </div>
-            </div>
-          @endforeach
+            @foreach ($third as $product)
+                  <div class="col-sm-6 col-md-3">
+                        <div class="latest-movie">
+                              <a href="#"><img src="{{ asset('images/' . $product->image) }}"
+                                          style="width: 270px; height: 244px;" alt="Movie 3"></a>
+                        </div>
+                  </div>
+            @endforeach
 
       </div> <!-- .row -->
 
@@ -76,89 +78,29 @@
                   style="text-align: center; align-items: center; margin-left: 0%;  position:relative;transform:  translate(10%, 5%);">
 
                   <div class="row" style="justify-content: center">
+                        @foreach ($reviews as $review)
                         <div class="card col-md-4 col-11">
                               <div class="card-content text-center">
                                     <div class="card-body p-0">
-                                          <div class="profile mb-4 mt-3"> <img src="https://i.imgur.com/Ur43esv.jpg">
+                                          <div class="profile mb-4 mt-3"> <img src="{{asset('images/' . ($review->user->image ?? ""))}}">
                                           </div>
                                           <br />
-                                          <h4 style="color: #DE0A0A;" id="rvu1"> Movie Name : Godzilla</h4>
+                                          <h4 style="color: #DE0A0A;" id="rvu1"> Movie Name : {{$review->product->name ?? ""}}</h4>
                                           <div class="card-subtitle">
                                                 <p> <small class="text-muted"> <i class="fa fa-quote-left"></i>
-                                                            the movie has spectacle and some genuinely
-                                                            outstanding battle
-                                                            moments, but they're dragged down by a weak
-                                                            story, silly
-                                                            dialogue, and dull plotting <i class="fa fa-quote-right"></i>
+                                                            {{$review->review}} <i class="fa fa-quote-right"></i>
                                                       </small>
                                                 </p>
                                           </div>
 
-                                          <div class="ratings"> <i class="fa fa-star"></i> <i
-                                                      class="fa fa-star"></i>
-
-
-                                          </div>
-                                    </div>
-                              </div>
-                        </div>
-                        <div class="card col-md-4 col-11 second">
-                              <div class="card-content">
-                                    <div class="card-body p-0">
-                                          <div class="profile mb-4 mt-3"> <img src="https://i.imgur.com/8RKXAIV.jpg">
-                                          </div>
-                                          <Br />
-                                          <h4 style="color: #DE0A0A;" id="rvu2"> Movie Name : Maleficent
-                                          </h4>
-                                          <div class="card-subtitle">
-                                                <p> <small class="text-muted"> <i class="fa fa-quote-left  "></i>
-                                                            Undoubtedly, Jolie's performance will be touted
-                                                            as elegantly
-                                                            evil, but it's Elle Fanning's effervescence as
-                                                            Aurora that
-                                                            really makes this film glow. <i class="fa fa-quote-right"></i>
-                                                      </small> </p>
-                                          </div>
-
-                                          <div class="ratings"> <i class="fa fa-star"></i> <i
-                                                      class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                      class="fa fa-star"></i>
-
-                                          </div>
-                                    </div>
-                              </div>
-                        </div>
-                        <div class="card col-md-4 col-11 third">
-                              <div class="card-content">
-                                    <div class="card-body p-0">
-                                          <div class="profile mb-4 mt-3"> <img src="https://i.imgur.com/J6l19aF.jpg">
-                                          </div>
-                                          <br />
-                                          <h4 style="color: #DE0A0A;" id="rvu3"> Movie Name : Luca</h4>
-                                          <div class="card-subtitle">
-                                                <p> <small class="text-muted"> <i class="fa fa-quote-left"></i>
-                                                            Luca is a continual delight, a film that will
-                                                            make you feel
-                                                            warm, fuzzy and wanting for more.
-                                                            <i class="fa fa-quote-right"></i>
-
-                                                      </small>
-                                                </p>
-                                          </div>
-
-                                          <br />
-
-                                          <div class="ratings"> <i class="fa fa-star"></i> <i
-                                                      class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
+                                          <div class="ratings"> 
+                                                <i class="fa fa-star"></i> 
                                                 <i class="fa fa-star"></i>
                                           </div>
-
                                     </div>
-
                               </div>
                         </div>
+                        @endforeach
                   </div>
             </div>
 

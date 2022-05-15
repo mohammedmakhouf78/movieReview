@@ -62,18 +62,12 @@ Route::group(['prefix' => '/', 'as' => 'home.'],function(){
     });
 });
 
-Route::group(['prefix' =>'admin' , 'as'=>'admin.'],function (){
+Route::group(['prefix' =>'admin' , 'as'=>'admin.' , 'middleware' => ['admin','auth']],function (){
     Route::get('/',[HomeController::class ,'index'])->name('index');
 
     Route::resource('category',CategoryController::class);
     Route::resource('user',UserController::class);
     Route::resource('product',ProductController::class);
     Route::resource('review',ReviewController::class);
-
-    Route::group([],function(){
-        Route::get('/loginPage',[AuthController::class,'loginPage'])->name('loginPage');
-        Route::post('login',[AuthController::class ,'login'])->name('login');
-    });
-
 });
 
