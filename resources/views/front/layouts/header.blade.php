@@ -1,15 +1,15 @@
 <header class="site-header">
 
       <div class="container">
-            <a href="index.html" id="branding">
+            <a href="{{route('home.index')}}" id="branding">
 
-                  <img src="{{ asset('frontTemplate/images/logo2.png') }}" alt="" class="logo"
+                  <img src="{{ asset('images/logo.webp') }}" alt="" class="logo"
                         style="width: 75px;height: 75px; margin-top: -13px; margin-left: 5px; ">
                   <div class="logo-copy">
                         <h1 class="site-title"
                               style="font-weight: bolder ; font-family:     Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 30px; padding-left: 5px;">
                               Movie
-                              <span style="color: #DE0A0A;">Reveviw</span>
+                              <span style="color: #DE0A0A;">Review</span>
                         </h1>
                         <small class="site-description"> Make Your Review Share Us Your Opinion
                               <br /> On Recent Movies</small>
@@ -49,6 +49,14 @@
                                                 style="color: #fff; font-size: 16px; font-weight: bold;">Profile</a>
                                     </li>
                               @endrole
+
+                              @role('admin')
+                                    <li class="menu-item">
+                                          <a target="_blank" href="{{ route('admin.index') }}"
+                                                style="color: #fff; font-size: 16px; font-weight: bold;">Admin Dashboard</a>
+                                    </li>
+                              @endrole
+
                               <li class="menu-item">
                                     <a href="{{ route('home.logout') }}"
                                           style="color: #fff; font-size: 16px; font-weight: bold;">Logout</a>

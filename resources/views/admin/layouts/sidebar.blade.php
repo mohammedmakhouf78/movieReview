@@ -2,9 +2,9 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-        <img src="{{asset('AdminLET/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+        <img src="{{asset('images/logo.webp')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
              style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <span class="brand-text font-weight-light">Movie Review</span>
     </a>
 
     <!-- Sidebar -->
@@ -12,10 +12,10 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{asset('AdminLET/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+                <img src="{{asset('images/' . (Auth::user()->image ?? ""))}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block">{{Auth::user()->name}}</a>
             </div>
         </div>
 
@@ -29,7 +29,7 @@
                      @endif
                 <li class="nav-item has-treeview {{currentRoute('admin.category.index') ? 'menu-open' : ''}}">
                     <a href="#" class="nav-link {{currentRoute('admin.category.index') ? 'active' : ''}}">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="fas fa-th-large nav-icon"></i>
                         <p>
                             Category
                             <i class="right fas fa-angle-left"></i>
@@ -38,7 +38,7 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{route('admin.category.index')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-table nav-icon"></i>
                                 <p>Categories</p>
                             </a>
                         </li>
@@ -48,7 +48,7 @@
 
                 <li class="nav-item has-treeview {{currentRoute('admin.user.index') ? 'menu-open' : ''}}">
                     <a href="#" class="nav-link {{currentRoute('admin.user.index') ? 'active' : ''}}">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="fas fa-users nav-icon"></i>
                         <p>
                             User
                             <i class="right fas fa-angle-left"></i>
@@ -57,7 +57,7 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{route('admin.user.index')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-table nav-icon"></i>
                                 <p>User Table</p>
                             </a>
                         </li>
@@ -67,17 +67,17 @@
 
                 <li class="nav-item has-treeview {{currentRoute('admin.product.index') ? 'menu-open' : ''}}">
                     <a href="#" class="nav-link {{currentRoute('admin.product.index') ? 'active' : ''}}">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="fas fa-video nav-icon"></i>
                         <p>
-                            Product
+                            Movie
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{route('admin.product.index')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Product Table</p>
+                                <i class="fas fa-table nav-icon"></i>
+                                <p>Movie Table</p>
                             </a>
                         </li>
 
@@ -86,7 +86,7 @@
 
                 <li class="nav-item has-treeview {{currentRoute('admin.review.index') ? 'menu-open' : ''}}">
                     <a href="#" class="nav-link {{currentRoute('admin.review.index') ? 'active' : ''}}">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="fas fa-pen-nib nav-icon"></i>
                         <p>
                             Review
                             <i class="right fas fa-angle-left"></i>
@@ -95,7 +95,7 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{route('admin.review.index')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-table nav-icon"></i>
                                 <p>Review Table</p>
                             </a>
                         </li>
