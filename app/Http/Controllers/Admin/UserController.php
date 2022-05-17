@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -17,7 +16,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users =User::get();
+        $users =User::paginate(5);
         return view('admin.Pages.user.index',compact('users'));
     }
 
@@ -101,7 +100,6 @@ class UserController extends Controller
     {
         
         $data=$request->validated();
-        $data['password']=Hash::make($data['password']);
         if($request->file('image')){
             if(fileExists(public_path('images/' . $user->image)))
             {

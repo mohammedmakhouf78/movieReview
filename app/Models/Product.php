@@ -22,4 +22,9 @@ class Product extends Model
     {
         return $this->hasMany(Review::class, 'product_id');
     }
+
+    public function scopeIsApproved($query)
+    {
+        return $query->where('is_approved',true);
+    }
 }

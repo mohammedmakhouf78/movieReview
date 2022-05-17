@@ -76,6 +76,7 @@
                                     <th scope="col">Description</th>
                                     <th scope="col">Image</th>
                                     <th scope="col">Category</th>
+                                    <th scope="col">Is Approved</th>
                                     <th scope="col">Edit</th>
                                     <th scope="col">Delete</th>
                               </tr>
@@ -85,11 +86,22 @@
                               <tr>
                                     <th scope="row">{{$movie->id}}</th>
                                     <td>{{$movie->name}}</td>
-                                    <td>{{$movie->description}}</td>
+                                    <td>{!! $movie->description !!}</td>
                                     <td>
                                           <img width="200px" src="{{asset('images/' . $movie->image)}}" alt="">
                                     </td>
                                     <td>{{$movie->category->name ?? ""}}</td>
+
+                                    @if($movie->is_approved == false)
+                                    <td>
+                                          <button class="btn btn-danger">No</button>
+                                    </td>
+                                    @else
+                                    <td>
+                                          <button class="btn btn-success">Yes</button>
+                                    </td>
+                                    @endif
+
                                     <td>
                                           <form method="get" action="{{route('home.editor.movieEdit',$movie)}}">
                                               @csrf

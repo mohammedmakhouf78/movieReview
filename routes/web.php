@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => '/', 'as' => 'home.'],function(){
     Route::get('/',[FrontHomeController::class,'index'])->name('index');
+    Route::get('/about',[FrontHomeController::class,'about'])->name('about');
     Route::get('registerPage',[FrontAuthController::class,'registerPage'])->name('registerPage')->middleware('guest');
     Route::post('register',[FrontAuthController::class,'register'])->name('register')->middleware('guest');
     Route::get('loginPage',[FrontAuthController::class,'loginPage'])->name('loginPage')->middleware('guest');
