@@ -10,7 +10,7 @@ class MovieController extends Controller
 {
     public function index()
     {
-        $movies = Product::where('is_approved',true)->get();
+        $movies = Product::IsApproved()->get();
         return view('front.pages.movies.index',compact('movies'));
     }
 

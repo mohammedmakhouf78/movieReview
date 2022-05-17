@@ -20,31 +20,35 @@
                   <button type=" button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                   <ul class="menu"
                         style="padding: 10px; border: #333; background-color: #333;font-weight: 600; ">
-                        <li class="menu-item current-menu-item"><a href="{{ route('home.index') }}"
+                        <li class="menu-item {{currentRoute('home.index') ? "current-menu-item" : ""}} "><a href="{{ route('home.index') }}"
                                     style="color: #fff; font-size: 16px; font-weight: bold;">Home</a></li>
-                        <li class="menu-item">
+                        <li class="menu-item {{(currentRoute('home.movies.index') || currentRoute('home.movies.show')) ? "current-menu-item" : ""}}">
                               <a href="{{ route('home.movies.index') }}"
                                     style="color: #fff; font-size: 16px; font-weight: bold;">Movies</a>
                         </li>
+                        <li class="menu-item {{currentRoute('home.about') ? "current-menu-item" : ""}}">
+                              <a href="{{ route('home.about') }}"
+                                    style="color: #fff; font-size: 16px; font-weight: bold;">About</a>
+                        </li>
                         @guest
 
-                              <li class="menu-item">
+                              <li class="menu-item {{currentRoute('home.registerPage') ? "current-menu-item" : ""}}">
                                     <a href="{{ route('home.registerPage') }}"
                                           style="color: #fff; font-size: 16px; font-weight: bold;">Register</a>
                               </li>
-                              <li class="menu-item">
+                              <li class="menu-item {{currentRoute('home.loginPage') ? "current-menu-item" : ""}}">
                                     <a href="{{ route('home.loginPage') }}"
                                           style="color: #fff; font-size: 16px; font-weight: bold;">Login</a>
                               </li>
                         @else
                               @role('editor')
-                                    <li class="menu-item">
+                                    <li class="menu-item {{currentRoute('home.editor.profile') ? "current-menu-item" : ""}}">
                                           <a href="{{ route('home.editor.profile') }}"
                                                 style="color: #fff; font-size: 16px; font-weight: bold;">Profile</a>
                                     </li>
                               @endrole
                               @role('viewer')
-                                    <li class="menu-item">
+                                    <li class="menu-item {{currentRoute('home.viewer.profile') ? "current-menu-item" : ""}}">
                                           <a href="{{ route('home.viewer.profile') }}"
                                                 style="color: #fff; font-size: 16px; font-weight: bold;">Profile</a>
                                     </li>

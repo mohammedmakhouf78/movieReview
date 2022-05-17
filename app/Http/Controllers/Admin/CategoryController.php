@@ -16,7 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories =Category::get();
+        $categories =Category::paginate(5);
         return view('admin.Pages.Category.index',compact('categories'));
     }
 

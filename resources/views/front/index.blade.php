@@ -11,7 +11,7 @@
                         <ul class="slides">
                               @foreach ($first as $index => $product)
                                     <li>
-                                          <a href="#">
+                                          <a href="{{route('home.movies.show',$product)}}">
                                                 <img src="{{ asset('images/' . $product->image) }}"
                                                       alt="Slide {{ ++$index }}" style="height: 520px;">
                                           </a>
@@ -25,7 +25,7 @@
                         @foreach ($second as $index => $product)
                               <div class="col-sm-6 col-md-12">
                                     <div class="latest-movie">
-                                          <a href="#"><img src="{{ asset('images/' . $product->image) }}"
+                                          <a href="{{route('home.movies.show',$product)}}"><img src="{{ asset('images/' . $product->image) }}"
                                                       style="width: 270px; height: 244px;"
                                                       alt="Movie {{ ++$index }}"></a>
                                     </div>
@@ -38,7 +38,7 @@
             @foreach ($third as $product)
                   <div class="col-sm-6 col-md-3">
                         <div class="latest-movie">
-                              <a href="#"><img src="{{ asset('images/' . $product->image) }}"
+                              <a href="{{route('home.movies.show',$product)}}"><img src="{{ asset('images/' . $product->image) }}"
                                           style="width: 270px; height: 244px;" alt="Movie 3"></a>
                         </div>
                   </div>
