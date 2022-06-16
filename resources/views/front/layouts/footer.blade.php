@@ -77,14 +77,14 @@
 </div>
 <!-- Default snippet for navigation -->
 
-@yield('script')
-
 
 <script src="{{asset('frontTemplate/js/jquery-1.11.1.min.js')}}"></script>
 <script src="{{asset('frontTemplate/js/plugins.js')}}"></script>
 <script src="{{asset('frontTemplate/js/app.js')}}"></script>
 <script src="{{asset('frontTemplate/bootstrap-5.1.3-dist\js\jquery-3.6.0.min.js')}}"></script>
 <script src="{{asset('frontTemplate/bootstrap-5.1.3-dist\js\bootstrap.min.js')}}"></script>
+
+@yield('script')
 
 @include('sweetalert::alert')
 

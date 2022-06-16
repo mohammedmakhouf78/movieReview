@@ -24,6 +24,7 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
         if($request->type == 'viewer')
         {
             $user->attachRole('viewer');
@@ -36,7 +37,7 @@ class AuthController extends Controller
         return redirect(route('home.loginPage'));
     }
 
-    
+
     public function loginPage()
     {
         return view('front.pages.auth.login');
