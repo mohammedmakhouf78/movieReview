@@ -13,32 +13,28 @@ class ReviewController extends Controller
 {
     public function create(StoreReviewRequest $request)
     {
-        $res = Http::asForm()->post('http://127.0.0.1:3000/',[
-            'review' => $request->review
+        $res = Http::get('http://127.0.0.1:5005/get_rate', [
+            'word' => $request->review
         ]);
+
         $result = $res->body();
-        $result = str_replace("\n","",$result);
-        $result = str_replace('"',"",$result);
-        if($result == "positive")
-        {
+        $result = str_replace("\n", "", $result);
+        $result = str_replace('"', "", $result);
+        if ($result == "positive") {
             Review::create([
                 'user_id' => $request->user_id,
                 'product_id' => $request->product_id,
                 'review' => $request->review,
                 'rate' => true,
             ]);
-        }
-        else if($result == "negative")
-        {
+        } else if ($result == "negative") {
             Review::create([
                 'user_id' => $request->user_id,
                 'product_id' => $request->product_id,
                 'review' => $request->review,
                 'rate' => false,
             ]);
-        }
-        else
-        {
+        } else {
             Alert::error('Error Title', 'There was an error');
             return redirect()->back();
         }

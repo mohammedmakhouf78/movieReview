@@ -151,7 +151,7 @@
                                         margin-bottom: 20px; ">Submit Review</button>
                               </form>
 
-                              <div class="stars">
+                              {{-- <div class="stars">
                                     <div class="container2">
                                           <div class="feedback">
                                                 <div class="rating">
@@ -319,7 +319,7 @@
                                                 </div>
                                           </div>
                                     </div>
-                              </div>
+                              </div> --}}
 
 
 
