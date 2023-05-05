@@ -8,32 +8,29 @@ import pandas as pd
 import nltk
 from flask import Flask
 app = Flask(__name__)
-# nltk.download('maxent_ne_chunker')
-# nltk.download('words')
-# nltk.download('vader_lexicon')
+nltk.download('maxent_ne_chunker')
+nltk.download('words')
+nltk.download('vader_lexicon')
+plt.style.use('ggplot')
 
-# plt.style.use('ggplot')
+df = pd.read_csv('./machine/archive/Twitter_Data.csv')
 
-# df = pd.read_csv('./machine/archive/Twitter_Data.csv')
+ax = df['category'].value_counts().sort_index().plot(
+    kind='bar', title='Count of Reviews by Category', figsize=(10, 15))
 
-# ax = df['category'].value_counts().sort_index().plot(
-#     kind='bar', title='Count of Reviews by Category', figsize=(10, 15))
+ax.set_label('Rev')
 
-# ax.set_label('Rev')
+example = df['clean_text'][50]
+print(example)
+tokens = nltk.word_tokenize(example)
 
-# # plt.show()
+tagged = nltk.pos_tag(tokens)
 
-# example = df['clean_text'][50]
-# print(example)
-# tokens = nltk.word_tokenize(example)
+entities = nltk.chunk.ne_chunk(tagged)
 
-# tagged = nltk.pos_tag(tokens)
+sia = SentimentIntensityAnalyzer()
 
-# entities = nltk.chunk.ne_chunk(tagged)
-
-# sia = SentimentIntensityAnalyzer()
-
-# x = sia.polarity_scores(example)
+x = sia.polarity_scores(example)
 
 
 @app.get('/get_rate')
