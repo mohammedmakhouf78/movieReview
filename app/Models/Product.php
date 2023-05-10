@@ -8,14 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
-    protected $guarded =[];
+    protected $guarded = [];
 
-    public function category(){
-        return $this->belongsTo(Category::class,'category_id');
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
-    public function user(){
-        return $this->belongsTo(User::class,'user_id');
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function reviews()
@@ -25,6 +27,6 @@ class Product extends Model
 
     public function scopeIsApproved($query)
     {
-        return $query->where('is_approved',true);
+        return $query->where('is_approved', true);
     }
 }
