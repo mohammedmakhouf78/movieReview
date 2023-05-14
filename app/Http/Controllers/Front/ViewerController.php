@@ -20,20 +20,19 @@ class ViewerController extends Controller
 
     public function edit(User $user)
     {
-        return view('front.pages.viewer.edit',compact('user'));
+        return view('front.pages.viewer.edit', compact('user'));
     }
 
-    public function update(UpdateUserRequest $request,User $user)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        $data=$request->validated();
-        if($request->file('image')){
-            if(fileExists(public_path('images/' . $user->image)))
-            {
+        $data = $request->validated();
+        if ($request->file('image')) {
+            if (fileExists(public_path('images/' . $user->image))) {
                 File::delete(public_path('images/' . $user->image));
             }
-            $file= $request->file('image');
-            $filename= date('YmdHi').$file->getClientOriginalName();
-            $file-> move(public_path('images'), $filename);
+            $file = $request->file('image');
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('images'), $filename);
             $data['image'] = $filename;
         }
         $user->update($data);

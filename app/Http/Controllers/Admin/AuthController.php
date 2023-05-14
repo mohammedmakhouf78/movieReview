@@ -12,31 +12,30 @@ use RealRashid\SweetAlert\Facades\Alert;
 class AuthController extends Controller
 {
 
-    public function loginPage()
-    {
-        return view('admin.auth.login');
-    }
+  public function loginPage()
+  {
+    return view('admin.auth.login');
+  }
 
-    public function login(LoginRequest $request)
-    {
-      $cred =$request->only('email','password');
-      $user =User::where('email',$request->email)->first();
+  public function login(LoginRequest $request)
+  {
+    $cred = $request->only('email', 'password');
+    $user = User::where('email', $request->email)->first();
 
-      if($user->hasRole('admin'))
-      {
-         if(Auth::attempt($cred))
-         {
-           return redirect(route('admin.index'));
-         }
+    if ($user->hasRole('admin')) {
+      if (Auth::attempt($cred)) {
+        return redirect(route('admin.index'));
       }
-      Alert::error('error','You are not allowed');
-      return redirect()->back();
     }
+    Alert::error('error', 'You are not allowed');
+    return redirect()->back();
+  }
 
 
-    public function logout(){
-        Auth::logout();
+  public function logout()
+  {
+    Auth::logout();
 
-       return redirect()->back();
-    }
+    return redirect()->back();
+  }
 }

@@ -15,7 +15,7 @@ class HomeController extends Controller
         $second = Product::IsApproved()->skip(3)->take(2)->get();
         $third = Product::IsApproved()->skip(5)->take(4)->get();
         $reviews = Review::limit(3)->get();
-        return view('front.index',compact('first','second','third','reviews'));
+        return view('front.index', compact('first', 'second', 'third', 'reviews'));
     }
 
     public function about()
