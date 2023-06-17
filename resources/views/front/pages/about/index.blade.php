@@ -70,46 +70,30 @@
             <div class="col-md-4">
                   <div class="team">
                         <figure class="team-image"><img src="{{asset('frontTemplate/dummy/boy1.jpg')}}" alt=""></figure>
-                        <h2 class="team-name">Ahmed Oweid</h2>
+                        <h2 class="team-name">Mohammd Emad</h2>
                         <small class="team-title">Team Leader</small>
                   </div>
             </div>
             <div class="col-md-4">
                   <div class="team">
                         <figure class="team-image"><img src="{{asset('frontTemplate/dummy/boy2.jpg')}}" alt=""></figure>
-                        <h2 class="team-name">Mahmoud </h2>
+                        <h2 class="team-name">Ahmed Samir </h2>
                         <small class="team-title">Front-End</small>
                   </div>
             </div>
             <div class="col-md-4">
                   <div class="team">
                         <figure class="team-image"><img src="{{asset('frontTemplate/dummy/girl1.jpg')}}" alt=""></figure>
-                        <h2 class="team-name">Koloud Abd-ElFattah</h2>
-                        <small class="team-title">Front-End</small>
-                  </div>
-            </div>
-            <div class="col-md-4">
-                  <div class="team">
-                        <figure class="team-image"><img src="{{asset('frontTemplate/dummy/girl2.jpg')}}" alt=""></figure>
-                        <h2 class="team-name">Rania Moahmmed</h2>
+                        <h2 class="team-name">Esraa Shoria</h2>
                         <small class="team-title">Front-End</small>
                   </div>
             </div>
             <div class="col-md-4">
                   <div class="team">
                         <figure class="team-image"><img src="{{asset('frontTemplate/dummy/boy3.jpg')}}" alt=""></figure>
-                        <h2 class="team-name">Omar Mohammed</h2>
+                        <h2 class="team-name">Ebrahim Gad</h2>
                         <small class="team-title">Back-End</small>
                   </div>
             </div>
-            <div class="col-md-4">
-                  <div class="team">
-                        <figure class="team-image"><img src="{{asset('frontTemplate/dummy/girl33.jpg')}}" alt=""></figure>
-                        <h2 class="team-name">Kholoud Bahgat</h2>
-                        <small class="team-title">BAck-End</small>
-                  </div>
-            </div>
-
-
       </div>
 @endsection
