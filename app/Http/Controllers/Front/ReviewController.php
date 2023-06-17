@@ -13,7 +13,7 @@ class ReviewController extends Controller
 {
     public function create(StoreReviewRequest $request)
     {
-        $res = Http::get('http://127.0.0.1:5005/get_rate', [
+        $res = Http::get('http://127.0.0.1:5003/get_rate', [
             'word' => $request->review
         ]);
 

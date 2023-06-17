@@ -12,25 +12,29 @@ nltk.download('maxent_ne_chunker')
 nltk.download('words')
 nltk.download('vader_lexicon')
 plt.style.use('ggplot')
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
 
-df = pd.read_csv('./machine/archive/Twitter_Data.csv')
+# FLASK_APP=main.py
 
-ax = df['category'].value_counts().sort_index().plot(
-    kind='bar', title='Count of Reviews by Category', figsize=(10, 15))
+# df = pd.read_csv('./machine/archive/Twitter_Data.csv')
 
-ax.set_label('Rev')
+# ax = df['category'].value_counts().sort_index().plot(
+#     kind='bar', title='Count of Reviews by Category', figsize=(10, 15))
 
-example = df['clean_text'][50]
-print(example)
-tokens = nltk.word_tokenize(example)
+# ax.set_label('Rev')
 
-tagged = nltk.pos_tag(tokens)
+# example = df['clean_text'][50]
+# print(example)
+# tokens = nltk.word_tokenize(example)
 
-entities = nltk.chunk.ne_chunk(tagged)
+# tagged = nltk.pos_tag(tokens)
 
-sia = SentimentIntensityAnalyzer()
+# entities = nltk.chunk.ne_chunk(tagged)
 
-x = sia.polarity_scores(example)
+# sia = SentimentIntensityAnalyzer()
+
+# x = sia.polarity_scores(example)
 
 
 @app.get('/get_rate')
@@ -47,3 +51,6 @@ def list_programming_languages():
     else:
         result = "negative"
     return result
+
+
+app.run(port=5003)
