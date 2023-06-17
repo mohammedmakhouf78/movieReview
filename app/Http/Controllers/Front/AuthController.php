@@ -25,15 +25,12 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        if($request->type == 'viewer')
-        {
+        if ($request->type == 'viewer') {
             $user->attachRole('viewer');
-        }
-        else if($request->type == 'editor')
-        {
+        } else if ($request->type == 'editor') {
             $user->attachRole('editor');
         }
-        Alert::toast('Thank you for registering!!!','success');
+        Alert::toast('Thank you for registering!!!', 'success');
         return redirect(route('home.loginPage'));
     }
 
@@ -45,20 +42,19 @@ class AuthController extends Controller
 
     public function login(LoginRequest $request)
     {
-        $data = $request->only(['email','password']);
-        if(Auth::attempt($data))
-        {
-            Alert::toast('Thank you for Login!!!','success');
+        $data = $request->only(['email', 'password']);
+        if (Auth::attempt($data)) {
+            Alert::toast('Thank you for Login!!!', 'success');
             return redirect(route('home.index'));
         }
-        Alert::toast('Email or Password is Wrong!!!','error');
+        Alert::toast('Email or Password is Wrong!!!', 'error');
         return redirect()->back();
     }
 
     public function logout()
     {
         Auth::logout();
-        Alert::toast('Thank you for Watching movies with us!!!','success');
+        Alert::toast('Thank you for Watching movies with us!!!', 'success');
         return redirect(route('home.loginPage'));
     }
 }

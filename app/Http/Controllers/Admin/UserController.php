@@ -12,36 +12,26 @@ use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
 
 use function PHPUnit\Framework\fileExists;
+
 class UserController extends Controller
 {
     public function index()
     {
-        $users =User::paginate(5);
-        return view('admin.Pages.user.index',compact('users'));
+        $users = User::paginate(5);
+        return view('admin.Pages.user.index', compact('users'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('admin.Pages.user.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreUserRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StoreUserRequest $request)
     {
-        if($request->file('image')){
-            $file= $request->file('image');
-            $filename= date('YmdHi').$file->getClientOriginalName();
-            $file-> move(public_path('images'), $filename);
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('images'), $filename);
         }
 
         $user = User::create([
@@ -50,94 +40,51 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
             'image' => $filename ?? '',
         ]);
-        if($request->type == 'viewer')
-        {
+        if ($request->type == 'viewer') {
             $user->attachRole('viewer');
-        }
-        else if($request->type == 'editor')
-        {
+        } else if ($request->type == 'editor') {
             $user->attachRole('editor');
-        }
-        else if($request->type == 'admin')
-        {
+        } else if ($request->type == 'admin') {
             $user->attachRole('admin');
         }
         Alert::success('Success Title', 'User Was Created');
         return redirect(route('admin.user.index'));
-
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function show(user $user)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
     public function edit(user $user)
     {
-        return view('admin.Pages.user.edit',compact('user'));
+        return view('admin.Pages.user.edit', compact('user'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateUserRequest  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
     public function update(UpdateUserRequest $request, User $user)
     {
-        
-        $data=$request->validated();
-        if($request->file('image')){
-            if(fileExists(public_path('images/' . $user->image)))
-            {
+
+        $data = $request->validated();
+        if ($request->file('image')) {
+            if (fileExists(public_path('images/' . $user->image))) {
                 File::delete(public_path('images/' . $user->image));
             }
-            $file= $request->file('image');
-            $filename= date('YmdHi').$file->getClientOriginalName();
-            $file-> move(public_path('images'), $filename);
+            $file = $request->file('image');
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('images'), $filename);
             $data['image'] = $filename;
         }
         $user->update($data);
-        if($request->type == 'viewer')
-        {
+        if ($request->type == 'viewer') {
             $user->attachRole('viewer');
-        }
-        else if($request->type == 'editor')
-        {
+        } else if ($request->type == 'editor') {
             $user->attachRole('editor');
-        }
-        else if($request->type == 'admin')
-        {
+        } else if ($request->type == 'admin') {
             $user->attachRole('admin');
         }
         Alert::success('Success Title', 'User Was Updated');
         return redirect(route('admin.user.index'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(User $user)
     {
         $user->delete();
         Alert::success('Success Title', 'User Was Deleted');
         return redirect(route('admin.user.index'));
-
     }
 }

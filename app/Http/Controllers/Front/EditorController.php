@@ -20,26 +20,25 @@ class EditorController extends Controller
 {
     public function profile()
     {
-        $movies = Product::where('user_id',Auth::user()->id)->get();
-        return view('front.pages.editor.profile',compact('movies'));
+        $movies = Product::where('user_id', Auth::user()->id)->get();
+        return view('front.pages.editor.profile', compact('movies'));
     }
 
     public function edit(User $user)
     {
-        return view('front.pages.editor.edit',compact('user'));
+        return view('front.pages.editor.edit', compact('user'));
     }
 
-    public function update(UpdateUserRequest $request,User $user)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        $data=$request->validated();
-        if($request->file('image')){
-            if(fileExists(public_path('images/' . $user->image)))
-            {
+        $data = $request->validated();
+        if ($request->file('image')) {
+            if (fileExists(public_path('images/' . $user->image))) {
                 File::delete(public_path('images/' . $user->image));
             }
-            $file= $request->file('image');
-            $filename= date('YmdHi').$file->getClientOriginalName();
-            $file-> move(public_path('images'), $filename);
+            $file = $request->file('image');
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('images'), $filename);
             $data['image'] = $filename;
         }
         $user->update($data);
@@ -50,15 +49,15 @@ class EditorController extends Controller
     public function movieCreate()
     {
         $categories = Category::get();
-        return view('front.pages.editor.movieCreate',compact('categories'));
+        return view('front.pages.editor.movieCreate', compact('categories'));
     }
 
     public function movieStore(StoreProductRequest $request)
     {
-        if($request->file('image')){
-            $file= $request->file('image');
-            $filename= date('YmdHi').$file->getClientOriginalName();
-            $file-> move(public_path('images'), $filename);
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('images'), $filename);
             $data['image'] = $filename;
         }
 
@@ -77,23 +76,22 @@ class EditorController extends Controller
     public function movieEdit(Product $product)
     {
         $categories = Category::get();
-        return view('front.pages.editor.editMovie',compact('product','categories'));
+        return view('front.pages.editor.editMovie', compact('product', 'categories'));
     }
 
-    public function movieUpdate(UpdateProductRequest $request,Product $product)
+    public function movieUpdate(UpdateProductRequest $request, Product $product)
     {
-        $data=$request->all();
-        if($request->file('image')){
-            if(fileExists(public_path('images/' . $product->image)))
-            {
+        $data = $request->all();
+        if ($request->file('image')) {
+            if (fileExists(public_path('images/' . $product->image))) {
                 File::delete(public_path('images/' . $product->image));
             }
-            $file= $request->file('image');
-            $filename= date('YmdHi').$file->getClientOriginalName();
-            $file-> move(public_path('images'), $filename);
+            $file = $request->file('image');
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('images'), $filename);
             $data['image'] = $filename;
         }
-        $data['is_approved'] = isset($data['is_approved']) ? $data['is_approved'] :0 ;
+        $data['is_approved'] = isset($data['is_approved']) ? $data['is_approved'] : 0;
         $product->update($data);
         Alert::success('Success Title', 'Product Was Updated');
         return redirect()->back();
